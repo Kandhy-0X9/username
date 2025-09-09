@@ -116,13 +116,37 @@ def register():
 		password = request.form['password']
 		if username in users:
 			flash('Username already exists!')
+			return render_template_string(signup_form)
 		else:
 			users[username] = {
 				'email': email,
 				'password': generate_password_hash(password)
 			}
-			flash('Sign up successful!')
-			return redirect(url_for('register'))
+			# Show GIF after successful sign-up
+			gif_html = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome!</title>
+	<style>
+		body { background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+		.container { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); text-align: center; }
+		h2 { color: #4e54c8; }
+		img { margin-top: 1rem; border-radius: 8px; }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Registration Successful!</h2>
+		<p>Welcome, {{ username }}!</p>
+		<img src="/static/toothlessdance-toothless.gif" alt="Toothless Dance GIF" width="300">
+	</div>
+</body>
+</html>
+'''
+			return render_template_string(gif_html, username=username)
+	# Always return the signup form for GET requests
 	return render_template_string(signup_form)
 
 if __name__ == '__main__':

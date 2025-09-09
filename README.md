@@ -15,6 +15,5 @@ Make sure you have Python and Flask installed.
 Run the application:
 python main.py
 Open your browser and go to [http://127.0.0.1:5000/register](http://127.0.0.1:5000/register)
-
 Note
 This is a simple demo and does not use a database. For real applications, use a proper database and add more security features.
