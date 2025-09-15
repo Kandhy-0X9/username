@@ -12,7 +12,7 @@ Success and error messages are displayed to users.
 How to Run
 
 Make sure you have Python and Flask installed.
-Run the application:
+Run the application in the terminal:
 python main.py
 Open your browser and go to [http://127.0.0.1:5000/register](http://127.0.0.1:5000/register)
 Note
